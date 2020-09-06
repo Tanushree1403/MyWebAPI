@@ -1,5 +1,4 @@
-{
-  "Employees": [
+ [
     {
       "EmpId": "01",
       "EmpJobTitle": "Developer",
@@ -37,7 +36,7 @@
       "EmpDept": "M3"
     }
   ]
-}
+
 
 
 

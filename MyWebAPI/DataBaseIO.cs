@@ -29,7 +29,7 @@ namespace MyWebAPI
         public List<Employees> ReadEmployees()
         {
            var jsonText = File.ReadAllText(_filePath);
-            var empList = JsonConvert.DeserializeObject<List<Employees>>(jsonText);
+            List<Employees> empList = JsonConvert.DeserializeObject<List<Employees>>(jsonText);
             return (List<Employees>)empList;
         }
 
@@ -54,7 +54,9 @@ namespace MyWebAPI
 
         public Employees ReadEmployeesById(string moniker)
         {
-            throw new NotImplementedException();
+            var jsonText = File.ReadAllText(_filePath);
+            var empList = JsonConvert.DeserializeObject<List<Employees>>(jsonText);
+            return empList.Where(x => x.EmpCode == moniker).FirstOrDefault();
         }
     }
 }

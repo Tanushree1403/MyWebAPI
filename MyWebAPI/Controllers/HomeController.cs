@@ -24,11 +24,20 @@ namespace MyWebAPI.Controllers
             this._mapper = mapper;
         }
         [HttpGet]
-        [System.Web.Http.Route("employees")]
+        [Route("employees")]
         public IHttpActionResult GetEmployees()
         {
             var result= _objEmployeeDb.ReadEmployees();
             var mappedResult = _mapper.Map<IList<EmployeeModel>>(result);
+            return Ok(mappedResult);
+        }
+
+        [HttpGet]
+        [Route("{moniker}")]
+        public IHttpActionResult GetEmployeesById(string moniker)
+        {
+            var result = _objEmployeeDb.ReadEmployeesById(moniker);
+            var mappedResult = _mapper.Map<EmployeeModel>(result);
             return Ok(mappedResult);
         }
 
