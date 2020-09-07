@@ -56,6 +56,24 @@ namespace MyWebAPI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("SearchByDeptId")]
+        public IHttpActionResult SearchByDeptId(string deptId, bool includeLocation = false)
+        {
+            try
+            {
+                var result = _objEmployeeDb.SearchByDept(deptId, includeLocation);
+                var mappedResult = _mapper.Map<IList<EmployeeModel>>(result);
+                return Ok(mappedResult);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+                //throw;
+            }
+
+        }
+
         [HttpPost]
         [Route("Add")]
         public IHttpActionResult PostEmployee(EmployeeModel emp)

@@ -51,6 +51,14 @@ namespace MyWebAPI
             return empList.Where(x => x.EmpCode == moniker).FirstOrDefault();
         }
 
+        public List<Employees> SearchByDept(string DeptId, bool includeLocation = false)
+        {
+            List<Employees> empList = DeserializeJson(includeLocation);
+            var result = (from e in empList where e.EmpDept.DeptId == DeptId select e).ToList(); 
+            return result;
+
+        }
+
         private List<Employees> DeserializeJson(bool includeLocation=false)
         {
             var jsonText = File.ReadAllText(_filePath);

@@ -9,7 +9,7 @@
     "EmpEmailId": "romin.k.irani@gmail.com",
     "EmpSalary": 4000,
     "EmpDept": {
-      "DeptId": "M1",
+      "DeptId": "M2",
       "DeptName": "IT"
     },
     "EmpLocation": {
