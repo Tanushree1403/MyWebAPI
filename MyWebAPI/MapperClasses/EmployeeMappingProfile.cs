@@ -22,9 +22,11 @@ namespace MyWebAPI.MapperClasses
                 .ForMember(e => e.FisrtName, opt => opt.MapFrom(src => src.EmpFisrtName))
                 .ForMember(e => e.Salary, opt => opt.MapFrom(src => src.EmpSalary))
                 .ForMember(e => e.SecondName, opt => opt.MapFrom(src => src.EmpSecondName))
+                .ForMember(e=>e.EmpSkills, opt=> opt.MapFrom(src=>src.EmpSkills))
                 .ReverseMap();
 
-            CreateMap<Location, LocationModel>();
+            CreateMap<Location, LocationModel>().ReverseMap();
+            CreateMap<Skills, SkillsModel>().ReverseMap();
         }
     }
 }

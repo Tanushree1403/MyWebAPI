@@ -39,5 +39,6 @@ namespace MyWebAPI.Models
         public string DeptName { get; set; }
 
         public LocationModel EmpLocation { get; set; }
+        public List<SkillsModel> EmpSkills { get; set; }
     }
 }

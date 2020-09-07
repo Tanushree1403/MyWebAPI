@@ -75,6 +75,7 @@ namespace MyWebAPI.Controllers
 
         }
 
+
 #endregion
 
         [HttpPost]
@@ -107,6 +108,15 @@ namespace MyWebAPI.Controllers
 
             else
                 return BadRequest(ModelState);
+        }
+
+        [HttpDelete]
+        [Route("{moniker}")]
+        public IHttpActionResult DeleteEmployee(string moniker)
+        {
+            Employees emp = _objEmployeeDb.ReadEmployeesById(moniker);
+            var mappedResult = _mapper.Map<Employees>(emp);
+            return Ok(_objEmployeeDb.DeleteEmployees(mappedResult));
         }
     }
 }

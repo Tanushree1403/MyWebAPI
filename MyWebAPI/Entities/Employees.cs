@@ -17,6 +17,7 @@ namespace MyWebAPI.Entities
         public double EmpSalary { get; set; }
         public Departments EmpDept { get; set; }
         public Location EmpLocation { get; set; }
+        public List<Skills> EmpSkills { get; set; }
 
     }
 }

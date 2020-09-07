@@ -25,6 +25,19 @@ namespace MyWebAPI
             return DeserializeJson(includeLocation); 
         }
 
+        public Employees ReadEmployeesById(string moniker, bool includeLocation = false)
+        {
+            List<Employees> empList = DeserializeJson(includeLocation);
+            return empList.Where(x => x.EmpCode == moniker).FirstOrDefault();
+        }
+        public List<Employees> SearchByDept(string DeptId, bool includeLocation = false)
+        {
+            List<Employees> empList = DeserializeJson(includeLocation);
+            var result = (from e in empList where e.EmpDept.DeptId == DeptId select e).ToList();
+            return result;
+
+        }
+
         public bool InsertEmployee(Employees emp)
         {
             try
@@ -52,30 +65,30 @@ namespace MyWebAPI
 
         public bool DeleteEmployees(Employees emp)
         {
-            throw new NotImplementedException();
+            List<Employees> empList = ReadEmployees();
+            empList.RemoveAll(e => e.EmpCode == emp.EmpCode);
+            //clear the file
+            File.WriteAllText(_filePath, String.Empty);
+
+            string input = JsonConvert.SerializeObject(empList, Formatting.None).ToString();
+            File.WriteAllText(_filePath,input);
+            return true;
         }
-
-        public Employees ReadEmployeesById(string moniker, bool includeLocation)
+        private List<Employees> DeserializeJson(bool includeLocation = false)
         {
-            List<Employees> empList= DeserializeJson(includeLocation);
-            return empList.Where(x => x.EmpCode == moniker).FirstOrDefault();
-        }
-
-        public List<Employees> SearchByDept(string DeptId, bool includeLocation = false)
-        {
-            List<Employees> empList = DeserializeJson(includeLocation);
-            var result = (from e in empList where e.EmpDept.DeptId == DeptId select e).ToList(); 
-            return result;
-
-        }
-
-        private List<Employees> DeserializeJson(bool includeLocation=false)
-        {
-            var jsonText = File.ReadAllText(_filePath);
-            List<Employees> empList = JsonConvert.DeserializeObject<List<Employees>>(jsonText);
-            if(!includeLocation)
-             empList.ForEach(e=>e.EmpLocation=null);
-            return empList;
+            try
+            {
+                var jsonText = File.ReadAllText(_filePath);
+                List<Employees> empList = JsonConvert.DeserializeObject<List<Employees>>(jsonText);
+                if (!includeLocation)
+                    empList.ForEach(e => e.EmpLocation = null);
+                return empList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+           // return null;
         }
     }
 }
