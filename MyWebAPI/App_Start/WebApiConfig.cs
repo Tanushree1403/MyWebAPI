@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyWebAPI.Auth;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -13,7 +14,7 @@ namespace MyWebAPI
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
+            config.Filters.Add(new BasicAuthAttribute());
             //config.Routes.MapHttpRoute(
             //    name: "DefaultApi",
             //    routeTemplate: "api/{controller}/{id}",

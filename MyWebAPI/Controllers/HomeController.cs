@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MyWebAPI.Auth;
 using MyWebAPI.Entities;
 using MyWebAPI.Models;
 using MyWebAPI.Repository;
@@ -25,8 +26,10 @@ namespace MyWebAPI.Controllers
         }
 
         # region GetRequest
+
         [HttpGet]
         [Route("employees")]
+        [BasicAuth]
         public IHttpActionResult GetEmployees(bool includeLocation = false)
         {
             try
