@@ -1,6 +1,7 @@
 ﻿using MyWebAPI.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,19 +9,18 @@ namespace MyWebAPI.Models
 {
     public class EmployeeModel
     {
-        //[MapTo(nameof(Employees.EmpJobTitle))]
         public string JobTitle { get; set; }
-
-        //[MapTo(nameof(Employees.EmpFisrtName))]
+        
+        [Required]
         public string FisrtName { get; set; }
 
-        //[MapTo(nameof(Employees.EmpSecondName))]
+        [Required]
         public string SecondName { get; set; }
 
-        //[MapTo(nameof(Employees.EmpCode))]
+        [Required]
         public string Code { get; set; }
 
-        //[MapTo(nameof(Employees.EmpEmailId))]
+        [Required]
         public string EmailId { get; set; }
 
         //[MapTo(nameof(Employees.EmpContact))]
@@ -29,12 +29,13 @@ namespace MyWebAPI.Models
         //[MapTo(nameof(Employees.EmpSalary))]
         public double Salary { get; set; }
 
-        //[MapTo(nameof(Employees.EmpDept))]
+        [Required]
         public string DeptId { get; set; }
 
         //[MapTo(nameof(Employees.EmpCity))]
         //public string City { get; set; }
 
+        [Required]
         public string DeptName { get; set; }
 
         public LocationModel EmpLocation { get; set; }

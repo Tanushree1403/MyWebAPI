@@ -24,6 +24,7 @@ namespace MyWebAPI.Controllers
             this._mapper = mapper;
         }
 
+        # region GetRequest
         [HttpGet]
         [Route("employees")]
         public IHttpActionResult GetEmployees(bool includeLocation = false)
@@ -41,7 +42,7 @@ namespace MyWebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("{moniker}")]
+        [Route("{moniker}", Name ="Employee")]
         public IHttpActionResult GetEmployeesById(string moniker, bool includeLocation = false)
         {
             try
@@ -74,19 +75,38 @@ namespace MyWebAPI.Controllers
 
         }
 
+#endregion
+
         [HttpPost]
         [Route("Add")]
         public IHttpActionResult PostEmployee(EmployeeModel emp)
         {
-            try
+            // check if moniker already exists.
+            if (_objEmployeeDb.ReadEmployeesById(emp.Code) != null)
+                 ModelState.AddModelError("Moniker","Moniker already in Use");
+
+            if (ModelState.IsValid)
             {
-                var mappedResult = _mapper.Map<Employees>(emp);
-                return Ok(_objEmployeeDb.InsertEmployee(mappedResult));
+                try
+                {
+                    var mappedResult = _mapper.Map<Employees>(emp);
+                    var newModel = _mapper.Map<EmployeeModel>(mappedResult);
+                    var location = Url.Link("Employee", new { moniker = newModel.Code });
+                    if (_objEmployeeDb.InsertEmployee(mappedResult))
+                        return Created("Employee", location);
+                    else
+                        return InternalServerError();
+
+                }
+
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
             }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+            else
+                return BadRequest(ModelState);
         }
     }
 }

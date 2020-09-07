@@ -27,11 +27,21 @@ namespace MyWebAPI
 
         public bool InsertEmployee(Employees emp)
         {
-            char[] trimChars = new char[] { ']','}'};
-           string input= JsonConvert.SerializeObject(emp, Formatting.None).ToString();
-            string data= File.ReadAllText(_filePath).TrimEnd(trimChars);
-            File.WriteAllText(_filePath, data+ ","+input +"]}");
-            return true;
+            try
+            {
+                
+                string input = JsonConvert.SerializeObject(emp, Formatting.None).ToString();
+                string data = File.ReadAllText(_filePath).Trim();
+                data = data.TrimEnd(']');
+                File.WriteAllText(_filePath, data + ",\r\n" + input + "]");
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
         }
 
         public bool UpdateEmployees(Employees emp)
