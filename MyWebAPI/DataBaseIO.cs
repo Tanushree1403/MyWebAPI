@@ -20,9 +20,9 @@ namespace MyWebAPI
             //throw new NotImplementedException();
         }
 
-        public List<Employees> ReadEmployees(bool includeDept= false)
+        public List<Employees> ReadEmployees(bool includeLocation = false)
         {                
-            return DeserializeJson(includeDept); 
+            return DeserializeJson(includeLocation); 
         }
 
         public bool InsertEmployee(Employees emp)
@@ -45,18 +45,18 @@ namespace MyWebAPI
             throw new NotImplementedException();
         }
 
-        public Employees ReadEmployeesById(string moniker, bool includeDept)
+        public Employees ReadEmployeesById(string moniker, bool includeLocation)
         {
-            List<Employees> empList= DeserializeJson(includeDept);
+            List<Employees> empList= DeserializeJson(includeLocation);
             return empList.Where(x => x.EmpCode == moniker).FirstOrDefault();
         }
 
-        private List<Employees> DeserializeJson(bool includeDept=false)
+        private List<Employees> DeserializeJson(bool includeLocation=false)
         {
             var jsonText = File.ReadAllText(_filePath);
             List<Employees> empList = JsonConvert.DeserializeObject<List<Employees>>(jsonText);
-            if(!includeDept)
-             empList.ForEach(e=>e.EmpDept=null);
+            if(!includeLocation)
+             empList.ForEach(e=>e.EmpLocation=null);
             return empList;
         }
     }

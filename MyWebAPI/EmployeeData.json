@@ -1,36 +1,46 @@
  [
   {
-    "EmpId": "01",
+    "EmpId": 1,
     "EmpJobTitle": "Developer",
     "EmpFisrtName": "Romin",
     "EmpSecondName": "Irani",
     "EmpCode": "E1",
-    "EmpCity": "CA",
     "EmpContact": "408-1234567",
     "EmpEmailId": "romin.k.irani@gmail.com",
-    "EmpSalary": "4000",
+    "EmpSalary": 4000,
     "EmpDept": {
       "DeptId": "M1",
       "DeptName": "IT"
+    },
+    "EmpLocation": {
+      "EmpState": "CA",
+      "EmpZipCode": 95120,
+      "EmpCity": "San Jose"
+
     }
   },
   {
-    "EmpId": "02",
+    "EmpId": 2,
     "EmpJobTitle": "Developer",
     "EmpFisrtName": "Neil",
     "EmpSecondName": "Irani",
     "EmpCode": "E2",
-    "EmpCity": "CA",
     "EmpContact": "408-1111111",
     "EmpEmailId": "neilrirani@gmail.com",
-    "EmpSalary": "4000",
+    "EmpSalary": 8000,
     "EmpDept": {
       "DeptId": "M1",
       "DeptName": "IT"
+    },
+    "EmpLocation": {
+      "EmpState": "TX",
+      "EmpZipCode": 77019,
+      "EmpCity": "Houston"
+
     }
   },
   {
-    "EmpId": "thanks",
+    "EmpId": 3,
     "EmpJobTitle": "Program Directory",
     "EmpFisrtName": "Tom",
     "EmpSecondName": "Hanks",
@@ -38,10 +48,16 @@
     "EmpCity": "CA",
     "EmpContact": "408-2222222",
     "EmpEmailId": "tomhanks@gmail.com",
-    "EmpSalary": "9000",
+    "EmpSalary": 9000,
     "EmpDept": {
       "DeptId": "M1",
       "DeptName": "IT"
+    },
+    "EmpLocation": {
+      "EmpState": "North Carolina",
+      "EmpZipCode": 12345,
+      "EmpCity": "Charlotte"
+
     }
 
   }

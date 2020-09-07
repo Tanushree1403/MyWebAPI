@@ -27,14 +27,16 @@ namespace MyWebAPI.Models
         public string Contact { get; set; }
 
         //[MapTo(nameof(Employees.EmpSalary))]
-        public string Salary { get; set; }
+        public double Salary { get; set; }
 
         //[MapTo(nameof(Employees.EmpDept))]
         public string DeptId { get; set; }
 
         //[MapTo(nameof(Employees.EmpCity))]
-        public string City { get; set; }
+        //public string City { get; set; }
 
         public string DeptName { get; set; }
+
+        public LocationModel EmpLocation { get; set; }
     }
 }

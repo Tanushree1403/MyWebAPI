@@ -26,11 +26,11 @@ namespace MyWebAPI.Controllers
 
         [HttpGet]
         [Route("employees")]
-        public IHttpActionResult GetEmployees(bool includeDept=false)
+        public IHttpActionResult GetEmployees(bool includeLocation = false)
         {
             try
             {
-                var result = _objEmployeeDb.ReadEmployees(includeDept);
+                var result = _objEmployeeDb.ReadEmployees(includeLocation);
                 var mappedResult = _mapper.Map<IList<EmployeeModel>>(result);
                 return Ok(mappedResult);
             }
@@ -42,11 +42,11 @@ namespace MyWebAPI.Controllers
 
         [HttpGet]
         [Route("{moniker}")]
-        public IHttpActionResult GetEmployeesById(string moniker, bool includeDept= false)
+        public IHttpActionResult GetEmployeesById(string moniker, bool includeLocation = false)
         {
             try
             {
-                var result = _objEmployeeDb.ReadEmployeesById(moniker, includeDept);
+                var result = _objEmployeeDb.ReadEmployeesById(moniker, includeLocation);
                 var mappedResult = _mapper.Map<EmployeeModel>(result);
                 return Ok(mappedResult);
             }

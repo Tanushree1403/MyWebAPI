@@ -13,7 +13,7 @@ namespace MyWebAPI.MapperClasses
         {
             CreateMap<Employees, EmployeeModel>()
                 .ForMember(e => e.JobTitle, opt => opt.MapFrom(src => src.EmpJobTitle))
-                .ForMember(e => e.City, opt => opt.MapFrom(src => src.EmpCity))
+                .ForMember(e => e.EmpLocation, opt => opt.MapFrom(src => src.EmpLocation))
                 .ForMember(e => e.Code, opt => opt.MapFrom(src => src.EmpCode))
                 .ForMember(e => e.Contact, opt => opt.MapFrom(src => src.EmpContact))
                 .ForMember(e => e.DeptId, opt => opt.MapFrom(src => src.EmpDept.DeptId))
@@ -22,6 +22,8 @@ namespace MyWebAPI.MapperClasses
                 .ForMember(e => e.FisrtName, opt => opt.MapFrom(src => src.EmpFisrtName))
                 .ForMember(e => e.Salary, opt => opt.MapFrom(src => src.EmpSalary))
                 .ForMember(e => e.SecondName, opt => opt.MapFrom(src => src.EmpSecondName));
+
+            CreateMap<Location, LocationModel>();
         }
     }
 }
