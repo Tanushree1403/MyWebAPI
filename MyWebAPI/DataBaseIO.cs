@@ -1,5 +1,4 @@
-﻿using MyWebAPI.Models;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,22 +14,15 @@ namespace MyWebAPI
     public class DataBaseIO:IDisposable,IEmployeeDb
     {
 
-        private string _filePath = @"C:\Users\iumh\source\repos\MyWebAPI\MyWebAPI\EmployeeData.json";
-        //private  readonly IEmployeeDb _objEmployeeDB;
-        //public DataBaseIO(IEmployeeDb employeeDb) 
-        //{
-        //   this._objEmployeeDB = employeeDb;
-        //}
+        private readonly string _filePath = System.Configuration.ConfigurationManager.AppSettings["jsonFile"];
         public void Dispose()
         {
             //throw new NotImplementedException();
         }
 
-        public List<Employees> ReadEmployees()
-        {
-           var jsonText = File.ReadAllText(_filePath);
-            List<Employees> empList = JsonConvert.DeserializeObject<List<Employees>>(jsonText);
-            return (List<Employees>)empList;
+        public List<Employees> ReadEmployees(bool includeDept= false)
+        {                
+            return DeserializeJson(includeDept); 
         }
 
         public bool InsertEmployee(Employees emp)
@@ -44,7 +36,8 @@ namespace MyWebAPI
 
         public bool UpdateEmployees(Employees emp)
         {
-            throw new NotImplementedException();
+            //Employees empOld = ReadEmployeesById(emp.EmpCode);
+            return true;
         }
 
         public bool DeleteEmployees(Employees emp)
@@ -52,11 +45,19 @@ namespace MyWebAPI
             throw new NotImplementedException();
         }
 
-        public Employees ReadEmployeesById(string moniker)
+        public Employees ReadEmployeesById(string moniker, bool includeDept)
+        {
+            List<Employees> empList= DeserializeJson(includeDept);
+            return empList.Where(x => x.EmpCode == moniker).FirstOrDefault();
+        }
+
+        private List<Employees> DeserializeJson(bool includeDept=false)
         {
             var jsonText = File.ReadAllText(_filePath);
-            var empList = JsonConvert.DeserializeObject<List<Employees>>(jsonText);
-            return empList.Where(x => x.EmpCode == moniker).FirstOrDefault();
+            List<Employees> empList = JsonConvert.DeserializeObject<List<Employees>>(jsonText);
+            if(!includeDept)
+             empList.ForEach(e=>e.EmpDept=null);
+            return empList;
         }
     }
 }

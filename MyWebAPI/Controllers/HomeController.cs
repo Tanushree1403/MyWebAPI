@@ -23,30 +23,52 @@ namespace MyWebAPI.Controllers
             this._objEmployeeDb = ObjEmployeeDb;
             this._mapper = mapper;
         }
+
         [HttpGet]
         [Route("employees")]
-        public IHttpActionResult GetEmployees()
+        public IHttpActionResult GetEmployees(bool includeDept=false)
         {
-            var result= _objEmployeeDb.ReadEmployees();
-            var mappedResult = _mapper.Map<IList<EmployeeModel>>(result);
-            return Ok(mappedResult);
+            try
+            {
+                var result = _objEmployeeDb.ReadEmployees(includeDept);
+                var mappedResult = _mapper.Map<IList<EmployeeModel>>(result);
+                return Ok(mappedResult);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet]
         [Route("{moniker}")]
-        public IHttpActionResult GetEmployeesById(string moniker)
+        public IHttpActionResult GetEmployeesById(string moniker, bool includeDept= false)
         {
-            var result = _objEmployeeDb.ReadEmployeesById(moniker);
-            var mappedResult = _mapper.Map<EmployeeModel>(result);
-            return Ok(mappedResult);
+            try
+            {
+                var result = _objEmployeeDb.ReadEmployeesById(moniker, includeDept);
+                var mappedResult = _mapper.Map<EmployeeModel>(result);
+                return Ok(mappedResult);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
         [Route("Add")]
         public IHttpActionResult PostEmployee(EmployeeModel emp)
         {
-            var mappedResult = _mapper.Map<Employees>(emp);
-             return Ok(_objEmployeeDb.InsertEmployee(mappedResult));
+            try
+            {
+                var mappedResult = _mapper.Map<Employees>(emp);
+                return Ok(_objEmployeeDb.InsertEmployee(mappedResult));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -15,7 +15,8 @@ namespace MyWebAPI.Entities
         public string EmpEmailId { get; set; }
         public string EmpContact { get; set; }
         public string EmpSalary { get; set; }
-        public string EmpDept { get; set; }
+        public Departments EmpDept { get; set; }
         public string EmpCity { get; set; }
+
     }
 }

@@ -9,11 +9,11 @@ namespace MyWebAPI.Repository
 {
     public interface IEmployeeDb
     {
-        List<Employees> ReadEmployees();
+        List<Employees> ReadEmployees(bool includeDept= false);
         bool InsertEmployee(Employees emp);
         bool UpdateEmployees(Employees emp);
         bool DeleteEmployees(Employees emp);
-        Employees ReadEmployeesById(string moniker);
+        Employees ReadEmployeesById(string moniker, bool includeDept=false);
 
     }
 }

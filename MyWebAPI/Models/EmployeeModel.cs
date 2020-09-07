@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyWebAPI.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -29,9 +30,11 @@ namespace MyWebAPI.Models
         public string Salary { get; set; }
 
         //[MapTo(nameof(Employees.EmpDept))]
-        public string Dept { get; set; }
+        public string DeptId { get; set; }
 
         //[MapTo(nameof(Employees.EmpCity))]
         public string City { get; set; }
+
+        public string DeptName { get; set; }
     }
 }

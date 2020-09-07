@@ -1,40 +1,50 @@
  [
-    {
-      "EmpId": "01",
-      "EmpJobTitle": "Developer",
-      "EmpFisrtName": "Romin",
-      "EmpSecondName": "Irani",
-      "EmpCode": "E1",
-      "EmpCity": "CA",
-      "EmpContact": "408-1234567",
-      "EmpEmailId": "romin.k.irani@gmail.com",
-      "EmpSalary": "4000",
-      "EmpDept": "M1"
-    },
-    {
-      "EmpId": "02",
-      "EmpJobTitle": "Developer",
-      "EmpFisrtName": "Neil",
-      "EmpSecondName": "Irani",
-      "EmpCode": "E2",
-      "EmpCity": "CA",
-      "EmpContact": "408-1111111",
-      "EmpEmailId": "neilrirani@gmail.com",
-      "EmpSalary": "4000",
-      "EmpDept": "M2"
-    },
-    {
-      "EmpId": "thanks",
-      "EmpJobTitle": "Program Directory",
-      "EmpFisrtName": "Tom",
-      "EmpSecondName": "Hanks",
-      "EmpCode": "E3",
-      "EmpCity": "CA",
-      "EmpContact": "408-2222222",
-      "EmpEmailId": "tomhanks@gmail.com",
-      "EmpSalary": "9000",
-      "EmpDept": "M3"
+  {
+    "EmpId": "01",
+    "EmpJobTitle": "Developer",
+    "EmpFisrtName": "Romin",
+    "EmpSecondName": "Irani",
+    "EmpCode": "E1",
+    "EmpCity": "CA",
+    "EmpContact": "408-1234567",
+    "EmpEmailId": "romin.k.irani@gmail.com",
+    "EmpSalary": "4000",
+    "EmpDept": {
+      "DeptId": "M1",
+      "DeptName": "IT"
     }
+  },
+  {
+    "EmpId": "02",
+    "EmpJobTitle": "Developer",
+    "EmpFisrtName": "Neil",
+    "EmpSecondName": "Irani",
+    "EmpCode": "E2",
+    "EmpCity": "CA",
+    "EmpContact": "408-1111111",
+    "EmpEmailId": "neilrirani@gmail.com",
+    "EmpSalary": "4000",
+    "EmpDept": {
+      "DeptId": "M1",
+      "DeptName": "IT"
+    }
+  },
+  {
+    "EmpId": "thanks",
+    "EmpJobTitle": "Program Directory",
+    "EmpFisrtName": "Tom",
+    "EmpSecondName": "Hanks",
+    "EmpCode": "E3",
+    "EmpCity": "CA",
+    "EmpContact": "408-2222222",
+    "EmpEmailId": "tomhanks@gmail.com",
+    "EmpSalary": "9000",
+    "EmpDept": {
+      "DeptId": "M1",
+      "DeptName": "IT"
+    }
+
+  }
   ]
 
 
