@@ -18,8 +18,8 @@ namespace MyWebAPI.Auth
             if (actionContext.Request.Headers.Authorization != null)
             {
                 var param= actionContext.Request.Headers.Authorization.Parameter;
-                var decodeParam = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(param));
-                string[] credential = decodeParam.Split(':');
+               // var decodeParam = System.Text.Encoding.UTF8.GetString(param);
+                string[] credential = param.Split(':');
                 if (credential.Length >= 2)
                 {
                     if (IsAuthorisedUser(credential[0].ToString(), credential[1].ToString()))

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EmployeeManagement.Web.Models.Employees>
+
+@{
+    ViewBag.Title = "Employee Management";
+}
+
+<div class="form-horizontal">
+
+    <hr />
+    <div class="form-group">
+
+
+        <table class="table table-responsive" style="width:400px">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FisrtName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailId)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FisrtName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailId)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
