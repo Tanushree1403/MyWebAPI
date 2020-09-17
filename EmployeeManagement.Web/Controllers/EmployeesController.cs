@@ -10,15 +10,17 @@ namespace EmployeeManagement.Web.Controllers
 {
     public class HomeController : Controller
     {
-  
+        private IEmployeeDB _db;
+        public HomeController(IEmployeeDB db)
+        {
+            this._db = db;
+        }
+
         public ActionResult Index()
         {
             List<Employees> emp = new List<Employees>();
-            using (EmployeeDB db = new EmployeeDB())
-            {
-                emp = db.GetAllEmployees();
-            }
-                return View(emp);
+            emp = _db.GetAllEmployees();
+            return View(emp);
         }
 
         public ActionResult About()

@@ -26,7 +26,7 @@ namespace EmployeeManagement.Web.DataService
            // throw new NotImplementedException();
         }
 
-        public List<Employees> GetAllEmployees()
+        public List<Employees> GetAllEmployees(bool includeLocation=false)
         {
             List<Employees> EmpInfo = new List<Employees>();
             try
@@ -38,7 +38,11 @@ namespace EmployeeManagement.Web.DataService
                  // string credentials=  Convert.ToBase64String("tanu:12345");
                    AuthenticationHeaderValue auth = new AuthenticationHeaderValue("Basic", "tanu:12345");
                    client.DefaultRequestHeaders.Authorization = auth;  //"tanu:12345";
-                    var responseTask = client.GetAsync("api/Home/employees");
+                   
+                    var responseTask =(includeLocation)? client.GetAsync("api/Home/employees?IncludeLocation=true")
+                        :client.GetAsync("api/Home/employees");
+                   
+
                     responseTask.Wait();
                     var result = responseTask.Result;
                     if (result.IsSuccessStatusCode)

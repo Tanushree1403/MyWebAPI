@@ -14,7 +14,7 @@ namespace EmployeeManagement.Web.Models
         public string SecondName { get; set; }
 
         public string Code { get; set; }
-
+   
         public string EmailId { get; set; }
 
         public string Contact { get; set; }
@@ -24,5 +24,9 @@ namespace EmployeeManagement.Web.Models
         public string DeptId { get; set; }
 
         public string DeptName { get; set; }
+
+        public Location EmpLocation { get; set; }
+
+        public List<Skills> EmpSkills { get; set; }
     }
 }

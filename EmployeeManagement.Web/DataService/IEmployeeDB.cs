@@ -9,7 +9,7 @@ namespace EmployeeManagement.Web.DataService
 {
     public interface IEmployeeDB
     {
-        List<Employees> GetAllEmployees();
+        List<Employees> GetAllEmployees(bool includeLocation = false);
         Employees GetEmployeeById();
         void AddEmployees(Employees emp);
         void UpdateEmployees();

@@ -16,22 +16,59 @@
                     @Html.DisplayNameFor(model => model.FisrtName)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.SecondName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.EmailId)
                 </th>
-
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeptName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpLocation.EmpCity)
+                </th>
             </tr>
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FisrtName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EmailId)
-                    </td>
-
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FisrtName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeptName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpLocation.EmpCity)
+                </td>
+                <td>
+                    <button> View Employee Skills</button>
+                </td>
+            </tr>
             }
 
         </table>
