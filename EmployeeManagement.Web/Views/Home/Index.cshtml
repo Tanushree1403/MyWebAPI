@@ -8,8 +8,6 @@
 
     <hr />
     <div class="form-group">
-
-
         <table class="table table-responsive" style="width:400px">
             <tr>
                 <th>
@@ -40,37 +38,43 @@
 
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FisrtName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SecondName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Code)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Contact)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmailId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Salary)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeptName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmpLocation.EmpCity)
-                </td>
-                <td>
-                    <button> View Employee Skills</button>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FisrtName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SecondName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Contact)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeptName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmpLocation.EmpCity)
+                    </td>
+                    <td>
+                        <input type="button" value="View Skills" onclick="window.location='@Url.Action("GetSkills", "Skills", new {moniker=item.Code })'" />
+                    </td>
+                </tr>
             }
 
         </table>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Add Employees" class="btn btn-default" onclick="window.location='@Url.Action("AddEmployees", "Home")'" />
+            </div>
+        </div>
     </div>
 </div>

@@ -19,10 +19,31 @@ namespace EmployeeManagement.Web.Controllers
         public ActionResult Index()
         {
             List<Employees> emp = new List<Employees>();
-            emp = _db.GetAllEmployees();
+            emp = _db.GetAllEmployees(true);
             return View(emp);
         }
 
+        [HttpGet]
+        public ActionResult AddEmployees()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddEmployees(Employees emp)
+        {
+            try
+            {
+                _db.AddEmployees(emp);
+                ViewBag.Message = "Employee details added successfully";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "Error!!";
+                //return RedirectToAction();
+            }
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

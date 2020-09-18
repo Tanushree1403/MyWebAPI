@@ -15,6 +15,5 @@ namespace MyWebAPI.Repository
         bool DeleteEmployees(Employees emp);
         Employees ReadEmployeesById(string moniker, bool includeLocation = false);
         List<Employees> SearchByDept(string DeptId, bool includeLocation = false);
-
     }
 }

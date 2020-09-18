@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EmployeeManagement.Web.Models.Skills>
+
+@{
+    ViewBag.Title = "Skills";
+}
+
+<h2>Skills</h2>
+<div class="form-group">
+
+
+    <table class="table table-responsive" style="width:400px">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCertified)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsCertified)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -138,8 +138,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="AutoFac\ContainerConfig.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="DataService\EmployeeDB.cs" />
     <Compile Include="DataService\IEmployeeDB.cs" />
+    <Compile Include="Enum\Enums.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,6 +186,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Skills\Skills.cshtml" />
+    <Content Include="Views\Skills\GetSkills.cshtml" />
+    <Content Include="Views\Home\AddEmployees.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
