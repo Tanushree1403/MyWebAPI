@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Web;
+using System.Web.Helpers;
 using EmployeeManagement.Web.Models;
 using Newtonsoft.Json;
 
@@ -14,9 +16,9 @@ namespace EmployeeManagement.Web.DataService
         public void AddEmployees(Employees emp)
         {
             HttpClient client = CreateClient();
-            HttpRequestMessage msg = new HttpRequestMessage();
-           // msg.Content =new JsonContent (emp);
-           // var responseTask = client.PostAsync("api/Home/Add", emp);
+            string jsonData= JsonConvert.SerializeObject(emp);
+            var stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json");
+            var responseTask = client.PostAsync("api/Home/Add", stringContent);
             responseTask.Wait();
             var result = responseTask.Result;
             if (result.IsSuccessStatusCode)

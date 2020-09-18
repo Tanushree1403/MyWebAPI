@@ -29,7 +29,7 @@ namespace MyWebAPI.Models
         //[MapTo(nameof(Employees.EmpSalary))]
         public double Salary { get; set; }
 
-        [Required]
+        //[Required]
         public string DeptId { get; set; }
 
         //[MapTo(nameof(Employees.EmpCity))]
