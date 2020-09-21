@@ -189,6 +189,7 @@
     <Content Include="Views\Skills\Skills.cshtml" />
     <Content Include="Views\Skills\GetSkills.cshtml" />
     <Content Include="Views\Home\AddEmployees.cshtml" />
+    <Content Include="Views\Home\GetEmployeeById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

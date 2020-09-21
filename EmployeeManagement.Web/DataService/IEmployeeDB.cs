@@ -11,7 +11,7 @@ namespace EmployeeManagement.Web.DataService
     public interface IEmployeeDB
     {
         List<Employees> GetAllEmployees(bool includeLocation = false);
-        Employees GetEmployeeById();
+        Employees GetEmployeeById(string moniker);
         void AddEmployees(Employees emp);
         void UpdateEmployees();
         void DeleteEmployess();

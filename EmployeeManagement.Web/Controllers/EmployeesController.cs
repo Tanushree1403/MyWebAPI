@@ -16,12 +16,23 @@ namespace EmployeeManagement.Web.Controllers
             this._db = db;
         }
 
+        [OutputCache(CacheProfile = "cache10min")]
         public ActionResult Index()
         {
             List<Employees> emp = new List<Employees>();
             emp = _db.GetAllEmployees(true);
             return View(emp);
         }
+
+        [HttpGet]
+        public ActionResult GetEmployeeById(string moniker)
+        {
+            Employees emp = new Employees();
+            emp = _db.GetEmployeeById(moniker);
+            ViewBag.Employee = emp;
+            return View();
+        }
+
 
         [HttpGet]
         public ActionResult AddEmployees()

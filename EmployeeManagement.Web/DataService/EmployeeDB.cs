@@ -80,9 +80,31 @@ namespace EmployeeManagement.Web.DataService
             //throw new NotImplementedException();
         }
 
-        public Employees GetEmployeeById()
+        public Employees GetEmployeeById(string moniker)
         {
-            throw new NotImplementedException();
+            Employees emp = new Employees();
+            try
+            {
+                HttpClient client = CreateClient();
+                var responseTask =  client.GetAsync("api/Home/" + moniker + "?IncludeLocation=true");
+                                    
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api   
+                    var EmpResponse = result.Content.ReadAsStringAsync().Result;
+
+                    //Deserializing the response recieved from web api and storing into the Employee list  
+                    emp = JsonConvert.DeserializeObject<Employees>(EmpResponse);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return emp;
+            //throw new NotImplementedException();
         }
 
         public List<Skills> GetEmployeeSkills(string moniker)

@@ -1,0 +1,103 @@
+﻿@using EmployeeManagement.Web.Enum
+@model EmployeeManagement.Web.Models.Employees
+@{
+    ViewBag.Title = "Employee Information";
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(e => e.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(e => e.Code, new { htmlAttributes = new { @class = "form-control", @Value=ViewBag.Employee.Code} })
+                @Html.ValidationMessageFor(e => e.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(e => e.FisrtName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(e => e.FisrtName, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Employee.FisrtName } })
+                @Html.ValidationMessageFor(e => e.FisrtName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(e => e.SecondName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(e => e.SecondName, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Employee.SecondName } })
+                @Html.ValidationMessageFor(e => e.SecondName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(e => e.JobTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(e => e.JobTitle, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Employee.JobTitle } })
+                @Html.ValidationMessageFor(e => e.JobTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(e => e.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(e => e.EmailId, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Employee.EmailId } })
+                @Html.ValidationMessageFor(e => e.EmailId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(e => e.Contact, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(e => e.Contact, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Employee.Contact } })
+                @Html.ValidationMessageFor(e => e.Contact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(e => e.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(e => e.Salary, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Employee.Salary } })
+                @Html.ValidationMessageFor(e => e.Salary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(e => e.DeptName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(e => e.DeptName, new SelectList(Enum.GetValues(typeof(DepartmentNames))),
+                    "Select Department",
+                    new { @class = "form-control", @Value = ViewBag.Employee.DeptName })
+
+                @Html.ValidationMessageFor(e => e.DeptName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(e => e.DeptId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(e => e.DeptId, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.ValidationMessageFor(e => e.DeptId, "", new { @class = "text-danger", @Value = ViewBag.Employee.DeptId })
+            </div>
+        </div>
+        @*Save Button*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update Employee" class="btn btn-default" />
+            </div>
+        </div>
+        @*Error Messages*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="color:green">
+                @ViewBag.Message
+
+            </div>
+        </div>
+    </div>
+}
+
+@*public string DeptId { get; set; }
+
+
+    public Location EmpLocation { get; set; }*@
