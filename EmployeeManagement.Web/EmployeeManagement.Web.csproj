@@ -17,7 +17,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -137,6 +137,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="AutoFac\ContainerConfig.cs" />
+    <Compile Include="Controllers\AddToCartController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="DataService\EmployeeDB.cs" />
@@ -190,6 +191,7 @@
     <Content Include="Views\Skills\GetSkills.cshtml" />
     <Content Include="Views\Home\AddEmployees.cshtml" />
     <Content Include="Views\Home\GetEmployeeById.cshtml" />
+    <Content Include="Views\AddToCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -225,7 +227,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56595</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56595/</IISUrl>
+          <IISUrl>http://localhost:56599/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:56599/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

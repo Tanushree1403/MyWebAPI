@@ -68,5 +68,23 @@ namespace EmployeeManagement.Web.Controllers
 
             return View();
         }
+
+        public ActionResult AddCartToSession(string empId)
+        {
+            List<Employees> empList = new List<Employees>();
+            Employees emp = _db.GetEmployeeById(empId);
+            empList.Add(emp);
+            //write to sessions:
+            if (Session["MyTeam"] == null)
+                Session["MyTeam"] = empList;
+            else
+            {
+                empList = (List<Employees>)Session["MyTeam"];
+                empList.Add(emp);
+                Session["MyTeam"] = empList;
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

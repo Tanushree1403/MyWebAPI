@@ -1,0 +1,44 @@
+﻿@model IEnumerable<EmployeeManagement.Web.Models.Employees>
+
+@{
+
+
+    ViewBag.Title = "AddToCart";
+}
+
+<div class="form-group">
+
+    <table class="table table-responsive" style="width:400px">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FisrtName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondName)
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FisrtName)
+                    @* @Html.DisplayFor(modelItem => item.FisrtName)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondName)
+                </td>
+
+                @*<td>
+                        <input type="button" value="View Skills"
+                               onclick="window.location='@Url.Action("GetSkills", "Skills", new {moniker=item.Code })'" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add to my Team", "AddCartToSession", new { empId = item.Code })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+
+</div>

@@ -40,8 +40,8 @@
             {
                 <tr>
                     <td>
-                        @Html.ActionLink(item.FisrtName, "GetEmployeeById",new { moniker=item.Code})
-                       @* @Html.DisplayFor(modelItem => item.FisrtName)*@
+                        @Html.ActionLink(item.FisrtName, "GetEmployeeById", new { moniker = item.Code })
+                        @* @Html.DisplayFor(modelItem => item.FisrtName)*@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.SecondName)
@@ -65,7 +65,11 @@
                         @Html.DisplayFor(modelItem => item.EmpLocation.EmpCity)
                     </td>
                     <td>
-                        <input type="button" value="View Skills" onclick="window.location='@Url.Action("GetSkills", "Skills", new {moniker=item.Code })'" />
+                        <input type="button" value="View Skills" 
+                               onclick="window.location='@Url.Action("GetSkills", "Skills", new {moniker=item.Code })'" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add to my Team","AddCartToSession", new { empId = item.Code })
                     </td>
                 </tr>
             }
