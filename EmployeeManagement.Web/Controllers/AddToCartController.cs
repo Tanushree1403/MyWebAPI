@@ -16,10 +16,6 @@ namespace EmployeeManagement.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //Employees emp= _db.GetEmployeeById(empId);
-            // //write to sessions:
-            //;
-            //(List<Employees>) Session["MyTeam"];
             return View((List<Employees>)Session["MyTeam"]);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyWebAPI.Auth;
 using MyWebAPI.Entities;
+using MyWebAPI.Filters;
 using MyWebAPI.Models;
 using MyWebAPI.Repository;
 using Newtonsoft.Json;
@@ -30,6 +31,7 @@ namespace MyWebAPI.Controllers
         [HttpGet]
         [Route("employees")]
         [BasicAuth]
+        [LoginFilter]
         public IHttpActionResult GetEmployees(bool includeLocation = false)
         {
             try
@@ -46,6 +48,7 @@ namespace MyWebAPI.Controllers
 
         [HttpGet]
         [Route("{moniker}", Name ="Employee")]
+        [LoginFilter]
         public IHttpActionResult GetEmployeesById(string moniker, bool includeLocation = false)
         {
             try
@@ -62,6 +65,7 @@ namespace MyWebAPI.Controllers
 
         [HttpGet]
         [Route("SearchByDeptId")]
+        [LoginFilter]
         public IHttpActionResult SearchByDeptId(string deptId, bool includeLocation = false)
         {
             try
@@ -83,6 +87,7 @@ namespace MyWebAPI.Controllers
 
         [HttpPost]
         [Route("Add")]
+        [LoginFilter]
         public IHttpActionResult PostEmployee(EmployeeModel emp)
         {
             // check if moniker already exists.
@@ -115,6 +120,7 @@ namespace MyWebAPI.Controllers
 
         [HttpDelete]
         [Route("{moniker}")]
+        [LoginFilter]
         public IHttpActionResult DeleteEmployee(string moniker)
         {
             Employees emp = _objEmployeeDb.ReadEmployeesById(moniker);

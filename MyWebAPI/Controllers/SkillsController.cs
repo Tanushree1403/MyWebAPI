@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyWebAPI.DAL;
 using MyWebAPI.Entities;
+using MyWebAPI.Filters;
 using MyWebAPI.Models;
 using MyWebAPI.Repository;
 using System;
@@ -13,6 +14,7 @@ using System.Web.Http;
 namespace MyWebAPI.Controllers
 {
     [RoutePrefix("api/Home/{moniker}/skills")]
+    [LoginFilter]
     public class SkillsController : ApiController
     {
         private readonly ISkillDB _skillDB;
@@ -25,6 +27,7 @@ namespace MyWebAPI.Controllers
 
         [HttpGet]
         [Route()]
+        [LoginFilter]
         public IHttpActionResult GetSkills(string moniker)
         {
            return Ok(_skillDB.GetEmployeeSkills(moniker));
@@ -32,6 +35,7 @@ namespace MyWebAPI.Controllers
 
         [HttpPost]
         [Route("Add")]
+        [LoginFilter]
         public IHttpActionResult PostSkills(string moniker, SkillsModel skill)
         {
             var mappedResult = _IMapper.Map<Skills>(skill);
