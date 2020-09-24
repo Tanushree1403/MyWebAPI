@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Web.DataService;
 using EmployeeManagement.Web.Models;
+using MyWebAPI.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace EmployeeManagement.Web.Controllers
         }
 
         [OutputCache(CacheProfile = "cache10min")]
+        [CustomExceptionFilter]
         public ActionResult Index()
         {
             List<Employees> emp = new List<Employees>();
@@ -25,6 +27,7 @@ namespace EmployeeManagement.Web.Controllers
         }
 
         [HttpGet]
+        [CustomExceptionFilter]
         public ActionResult GetEmployeeById(string moniker)
         {
             Employees emp = new Employees();
@@ -35,12 +38,14 @@ namespace EmployeeManagement.Web.Controllers
 
 
         [HttpGet]
+        [CustomExceptionFilter]
         public ActionResult AddEmployees()
         {
             return View();
         }
 
         [HttpPost]
+        [CustomExceptionFilter]
         public ActionResult AddEmployees(Employees emp)
         {
             try
@@ -69,6 +74,14 @@ namespace EmployeeManagement.Web.Controllers
             return View();
         }
 
+        public ActionResult Error()
+        {
+            ViewBag.Message = "Your Error page.";
+
+            return View();
+        }
+
+        [CustomExceptionFilter]
         public ActionResult AddCartToSession(string empId)
         {
             List<Employees> empList = new List<Employees>();

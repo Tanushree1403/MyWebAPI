@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Web.DataService;
 using EmployeeManagement.Web.Models;
+using MyWebAPI.Filters;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -14,6 +15,7 @@ namespace EmployeeManagement.Web.Controllers
         }
         // GET: AddToCart
         [HttpGet]
+        [CustomExceptionFilter]
         public ActionResult Index()
         {
             return View((List<Employees>)Session["MyTeam"]);
